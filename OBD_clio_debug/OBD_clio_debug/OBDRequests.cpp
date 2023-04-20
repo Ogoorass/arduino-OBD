@@ -173,6 +173,161 @@ void OBDRequests::main()
       break;
     }
 
+    case LONG_TERM_FUEL_TRIM_BANK:
+    {
+      temp = _OBD->longTermFuelTrimBank_1();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+        obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case ENGINE_LOAD:
+    {
+      temp = _OBD->engineLoad();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case RELATIVE_THROTTLE:
+    {
+      temp = _OBD->relativeThrottle();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case AMBIENT_AIR_TEMP:
+    {
+      temp = _OBD->ambientAirTemp();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("*C");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case COMMANDED_THROTTLE_ACTUATOR:
+    {
+      temp = _OBD->commandedThrottleActuator();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case MAX_MAF_RATE:
+    {
+      temp = _OBD->maxMafRate();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("MM");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case OIL_TEMP:
+    {
+      temp = _OBD->oilTemp();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("*C");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case FUEL_INJECT_TIMING:
+    {
+      temp = _OBD->fuelInjectTiming();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("*");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case FUEL_RATE:
+    {
+      temp = _OBD->fuelRate();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+       obdValue = String(temp);
+        _unit->setUnitType(FRACTIONAL);
+        _unit->setNominator("L");
+        _unit->setDenominator("h");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    
 
 
     default:
