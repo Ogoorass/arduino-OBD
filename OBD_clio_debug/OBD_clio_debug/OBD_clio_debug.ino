@@ -172,7 +172,28 @@ void loop() {
       obdRequests.setObdState(MAF_RATE);
     else if (message == "THROTTLE")
       obdRequests.setObdState(THROTTLE);
-    
+    else if (message == "SHORT_TERM_FUEL_TRIM_BANK")
+      obdRequests.setObdState(SHORT_TERM_FUEL_TRIM_BANK);
+    else if (message == "LONG_TERM_FUEL_TRIM_BANK")
+      obdRequests.setObdState(LONG_TERM_FUEL_TRIM_BANK);
+    else if (message == "ENGINE_LOAD")
+      obdRequests.setObdState(ENGINE_LOAD);
+    else if (message == "RELATIVE_THROTTLE")
+      obdRequests.setObdState(RELATIVE_THROTTLE);
+    else if (message == "AMBIENT_AIR_TEMP")
+      obdRequests.setObdState(AMBIENT_AIR_TEMP);
+    else if (message == "COMMANDED_THROTTLE_ACTUATOR")
+      obdRequests.setObdState(COMMANDED_THROTTLE_ACTUATOR);
+    else if (message == "MAX_MAF_RATE")
+      obdRequests.setObdState(MAX_MAF_RATE);
+    else if (message == "OIL_TEMP")
+      obdRequests.setObdState(OIL_TEMP);
+    else if (message == "FUEL_INJECT_TIMING")
+      obdRequests.setObdState(FUEL_INJECT_TIMING);
+    else if (message == "FUEL_RATE")
+      obdRequests.setObdState(FUEL_RATE);
+
+
     else
     {
       Serial.println("Bad token!");
