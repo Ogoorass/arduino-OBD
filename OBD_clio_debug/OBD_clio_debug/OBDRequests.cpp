@@ -51,7 +51,7 @@ void OBDRequests::setObdState(Obd_pid obd_state)
 }
 
 
-// put in in loop()
+// put it in in loop()
 void OBDRequests::main()
 {
 
@@ -94,6 +94,8 @@ void OBDRequests::main()
       {
 
         obdValue = String(temp_uint16);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("Nm");
 
       }
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
