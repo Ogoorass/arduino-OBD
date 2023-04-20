@@ -111,6 +111,9 @@ void OBDRequests::main()
       if (_OBD->nb_rx_state == ELM_SUCCESS)
       {
         obdValue = String(temp_int32);
+        _unit->setUnitType(FRACTIONAL);
+        _unit->setNominator("km");
+        _unit->setDenominator("h");
       }
 
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
@@ -124,7 +127,9 @@ void OBDRequests::main()
       temp = _OBD->mafRate();
 
       if (_OBD->nb_rx_state == ELM_SUCCESS)
-        obdValue = "MAF: " + String(temp);
+        obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("MR");
 
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
         obdValue = "ERROR R";
@@ -137,7 +142,9 @@ void OBDRequests::main()
       temp = _OBD->throttle();
 
       if (_OBD->nb_rx_state == ELM_SUCCESS)
-        obdValue = "THR: " + String(temp);
+        obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
 
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
         obdValue = "ERROR R";
@@ -149,7 +156,7 @@ void OBDRequests::main()
 
     default:
     {
-      obdValue = "--";
+      obdValue = "ERR";
       break;
     }
   }
