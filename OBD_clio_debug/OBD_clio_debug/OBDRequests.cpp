@@ -126,10 +126,12 @@ void OBDRequests::main()
     {
       temp = _OBD->mafRate();
 
-      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      if (_OBD->nb_rx_state == ELM_SUCCESS) 
+      {
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("MR");
+      }
 
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
         obdValue = "ERROR R";
@@ -142,9 +144,28 @@ void OBDRequests::main()
       temp = _OBD->throttle();
 
       if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
+      }
+
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case SHORT_TERM_FUEL_TRIM_BANK:
+    {
+      temp = _OBD->shortTermFuelTrimBank_1();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+        obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
 
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
         obdValue = "ERROR R";
