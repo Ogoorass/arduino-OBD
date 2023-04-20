@@ -156,7 +156,7 @@ void OBDRequests::main()
 
     default:
     {
-      obdValue = "ERR";
+      obdValue = "ERROR";
       break;
     }
   }
