@@ -10,6 +10,8 @@
 BluetoothSerial SerialBT;
 #define ELM_PORT SerialBT
 
+#define LOADING_LOGO opelLogo // logo displayed during startup (renaultLogo or opelLogo)
+
 #define SCREEN_WIDTH 128  // OLED display width, in pixels
 #define SCREEN_HEIGHT 32  // OLED display height, in pixels
 
@@ -32,7 +34,7 @@ BluetoothSerial SerialBT;
 #define UNIT_NORMAL_X_OFFSET 20 // x offset of the start of the normal unit
 #define UNIT_NORMAL_Y_OFFSET 16 // y offset of normal unit
 
-//default I2C pins for esp32 are GPIO21 (SDA) and GPIO22 (SCL)
+// default I2C pins for esp32 are GPIO21 (SDA) and GPIO22 (SCL)
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 // elm327 interface object
@@ -100,6 +102,40 @@ const char* renaultLogo[] = {
 "        .........                                                                                                               ",
 "         .......                                                                                                                "};
 
+static const char* opelLogo[] = {
+"                  ......                                                                                                        ",
+"               ....    ....                                                                                                     ",
+"              ..          ..                                                                                                    ",
+"            ...            ...                                                                                                  ",
+"           ..                ..                                                                                                 ",
+"          ..                  ..                                                                                                ",
+"         ..                    ..                                                                                               ",
+"        ..                      ..                                                                                              ",
+"        .                        .                                                                                              ",
+"       ..                        ..                                                                                             ",
+"       .                          .                                                                                             ",
+"      ..                          ..           ........                ........                .........                ..      ",
+"...........................        .          ..........               .........               .........                ..      ",
+"  ........................         ..        ...      ...              ..     ...              ..                       ..      ",
+"     .              .....           .        ..        ..              ..      ..              ..                       ..      ",
+"     .             .....            .        ..        ..              ..      ..              ..                       ..      ",
+"     .            .....             .        ..        ..              ..     ...              ........                 ..      ",
+"     ..          .......................     ..        ..              .........               ........                 ..      ",
+"      .         ..........................   ..        ..              ........                ..                       ..      ",
+"      .                            .         ..        ..              ..                      ..                       ..      ",
+"      ..                          ..         ...      ...              ..                      ..                       ..      ",
+"       .                          .           ..........               ..                      .........                ........",
+"       ..                        ..            ........                ..                      .........                ........",
+"        .                        .                                                                                              ",
+"        ..                      ..                                                                                              ",
+"         ..                    ..                                                                                               ",
+"          ..                  ..                                                                                                ",
+"           ..                ..                                                                                                 ",
+"            ...            ...                                                                                                  ",
+"              ..          ..                                                                                                    ",
+"               ....    ....                                                                                                     ",
+"                  ......                                                                                                        "};
+
 
 
 
@@ -117,7 +153,7 @@ void setup() {
   display.setTextSize(TEXT_SIZE);       // set size of the text
 
   display.clearDisplay();               // adafruit librarry initializes with its logo, so clear the buffer
-  putLogoInDisplayBuffer(renaultLogo);  // put Renault logo in display buffer and...
+  putLogoInDisplayBuffer(LOADING_LOGO);  // put Renault logo in display buffer and...
   display.display();                    // display it
 
   // start bluetooth
