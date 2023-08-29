@@ -199,35 +199,37 @@ void loop() {
       message += char(Serial.read());
 
     if (message == "RPM")
-      obdRequests.setObdState(RPM);
+      obdRequests.setObdState(_RPM);
     else if (message == "REF_TORQUE")
-      obdRequests.setObdState(REF_TORQUE);
+      obdRequests.setObdState(_REF_TORQUE);
     else if (message == "KPH")
-      obdRequests.setObdState(KPH);
+      obdRequests.setObdState(_KPH);
     else if (message == "MAF_RATE")
-      obdRequests.setObdState(MAF_RATE);
+      obdRequests.setObdState(_MAF_RATE);
     else if (message == "THROTTLE")
-      obdRequests.setObdState(THROTTLE);
+      obdRequests.setObdState(_THROTTLE);
     else if (message == "SHORT_TERM_FUEL_TRIM_BANK")
-      obdRequests.setObdState(SHORT_TERM_FUEL_TRIM_BANK);
+      obdRequests.setObdState(_SHORT_TERM_FUEL_TRIM_BANK);
     else if (message == "LONG_TERM_FUEL_TRIM_BANK")
-      obdRequests.setObdState(LONG_TERM_FUEL_TRIM_BANK);
+      obdRequests.setObdState(_LONG_TERM_FUEL_TRIM_BANK);
     else if (message == "ENGINE_LOAD")
-      obdRequests.setObdState(ENGINE_LOAD);
+      obdRequests.setObdState(_ENGINE_LOAD);
     else if (message == "RELATIVE_THROTTLE")
-      obdRequests.setObdState(RELATIVE_THROTTLE);
+      obdRequests.setObdState(_RELATIVE_THROTTLE);
     else if (message == "AMBIENT_AIR_TEMP")
-      obdRequests.setObdState(AMBIENT_AIR_TEMP);
+      obdRequests.setObdState(_AMBIENT_AIR_TEMP);
     else if (message == "COMMANDED_THROTTLE_ACTUATOR")
-      obdRequests.setObdState(COMMANDED_THROTTLE_ACTUATOR);
+      obdRequests.setObdState(_COMMANDED_THROTTLE_ACTUATOR);
     else if (message == "MAX_MAF_RATE")
-      obdRequests.setObdState(MAX_MAF_RATE);
+      obdRequests.setObdState(_MAX_MAF_RATE);
     else if (message == "OIL_TEMP")
-      obdRequests.setObdState(OIL_TEMP);
+      obdRequests.setObdState(_OIL_TEMP);
     else if (message == "FUEL_INJECT_TIMING")
-      obdRequests.setObdState(FUEL_INJECT_TIMING);
+      obdRequests.setObdState(_FUEL_INJECT_TIMING);
     else if (message == "FUEL_RATE")
-      obdRequests.setObdState(FUEL_RATE);
+      obdRequests.setObdState(_FUEL_RATE);
+    else if (message == "COMMANDED_EGR")
+      obdRequests.setObdState(_COMMANDED_EGR);
 
 
     else

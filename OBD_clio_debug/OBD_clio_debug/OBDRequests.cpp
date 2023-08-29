@@ -24,7 +24,7 @@ OBDRequests::OBDRequests(
 
   // set private variables
   _OBD = OBD;
-  _obd_state = RPM;
+  _obd_state = _RPM;
   _text_size = text_size;
   _text_y_offset = text_y_offset;
   _display = display;
@@ -67,7 +67,7 @@ void OBDRequests::main()
   switch (_obd_state)
   {
 
-    case RPM:
+    case _RPM:
     {
       temp_uint32 = _OBD->rpm();
 
@@ -86,7 +86,7 @@ void OBDRequests::main()
       break;
     }
 
-    case REF_TORQUE:
+    case _REF_TORQUE:
     {
       temp_uint16 = _OBD->referenceTorque();
 
@@ -104,7 +104,7 @@ void OBDRequests::main()
       break;
     }
 
-    case KPH:
+    case _KPH:
     {
       temp_int32 = _OBD->kph();
 
@@ -122,7 +122,7 @@ void OBDRequests::main()
       break;
     }
 
-    case MAF_RATE:
+    case _MAF_RATE:
     {
       temp = _OBD->mafRate();
 
@@ -139,7 +139,7 @@ void OBDRequests::main()
       break;
     }
 
-    case THROTTLE:
+    case _THROTTLE:
     {
       temp = _OBD->throttle();
 
@@ -156,7 +156,7 @@ void OBDRequests::main()
       break;
     }
 
-    case SHORT_TERM_FUEL_TRIM_BANK:
+    case _SHORT_TERM_FUEL_TRIM_BANK:
     {
       temp = _OBD->shortTermFuelTrimBank_1();
 
@@ -173,7 +173,7 @@ void OBDRequests::main()
       break;
     }
 
-    case LONG_TERM_FUEL_TRIM_BANK:
+    case _LONG_TERM_FUEL_TRIM_BANK:
     {
       temp = _OBD->longTermFuelTrimBank_1();
 
@@ -190,7 +190,7 @@ void OBDRequests::main()
       break;
     }
 
-    case ENGINE_LOAD:
+    case _ENGINE_LOAD:
     {
       temp = _OBD->engineLoad();
 
@@ -207,7 +207,7 @@ void OBDRequests::main()
       break;
     }
 
-    case RELATIVE_THROTTLE:
+    case _RELATIVE_THROTTLE:
     {
       temp = _OBD->relativeThrottle();
 
@@ -224,7 +224,7 @@ void OBDRequests::main()
       break;
     }
 
-    case AMBIENT_AIR_TEMP:
+    case _AMBIENT_AIR_TEMP:
     {
       temp = _OBD->ambientAirTemp();
 
@@ -241,7 +241,7 @@ void OBDRequests::main()
       break;
     }
 
-    case COMMANDED_THROTTLE_ACTUATOR:
+    case _COMMANDED_THROTTLE_ACTUATOR:
     {
       temp = _OBD->commandedThrottleActuator();
 
@@ -258,7 +258,7 @@ void OBDRequests::main()
       break;
     }
 
-    case MAX_MAF_RATE:
+    case _MAX_MAF_RATE:
     {
       temp = _OBD->maxMafRate();
 
@@ -275,7 +275,7 @@ void OBDRequests::main()
       break;
     }
 
-    case OIL_TEMP:
+    case _OIL_TEMP:
     {
       temp = _OBD->oilTemp();
 
@@ -292,7 +292,7 @@ void OBDRequests::main()
       break;
     }
 
-    case FUEL_INJECT_TIMING:
+    case _FUEL_INJECT_TIMING:
     {
       temp = _OBD->fuelInjectTiming();
 
@@ -309,7 +309,7 @@ void OBDRequests::main()
       break;
     }
 
-    case FUEL_RATE:
+    case _FUEL_RATE:
     {
       temp = _OBD->fuelRate();
 
@@ -321,6 +321,22 @@ void OBDRequests::main()
         _unit->setDenominator("h");
       }
 
+      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+        obdValue = "ERROR R";
+
+      break;
+    }
+
+    case _COMMANDED_EGR:
+    {
+      temp = _OBD->commandedEGR();
+
+      if (_OBD->nb_rx_state == ELM_SUCCESS)
+      {
+        obdValue = String(temp);
+        _unit->setUnitType(NORMAL);
+        _unit->setNormalUnit("%");
+      }
       else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
         obdValue = "ERROR R";
 
