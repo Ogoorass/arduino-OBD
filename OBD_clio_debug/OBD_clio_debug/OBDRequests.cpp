@@ -79,9 +79,7 @@ void OBDRequests::main()
         _unit->setNominator("obr");
         _unit->setDenominator("min");
         
-      }
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -97,9 +95,7 @@ void OBDRequests::main()
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("Nm");
 
-      }
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -114,10 +110,7 @@ void OBDRequests::main()
         _unit->setUnitType(FRACTIONAL);
         _unit->setNominator("km");
         _unit->setDenominator("h");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -131,10 +124,7 @@ void OBDRequests::main()
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("MR");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -148,10 +138,7 @@ void OBDRequests::main()
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -165,10 +152,7 @@ void OBDRequests::main()
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -182,10 +166,7 @@ void OBDRequests::main()
         obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -199,10 +180,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -216,10 +194,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -233,10 +208,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("*C");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -250,10 +222,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -267,10 +236,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("MM");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }       
 
       break;
     }
@@ -284,10 +250,7 @@ void OBDRequests::main()
        obdValue = String(temp);
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("*C");
-      }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
+      }      
 
       break;
     }
@@ -302,9 +265,6 @@ void OBDRequests::main()
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("*");
       }
-
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
 
       break;
     }
@@ -321,9 +281,6 @@ void OBDRequests::main()
         _unit->setDenominator("h");
       }
 
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
-
       break;
     }
 
@@ -337,8 +294,6 @@ void OBDRequests::main()
         _unit->setUnitType(NORMAL);
         _unit->setNormalUnit("%");
       }
-      else if (_OBD->nb_rx_state != ELM_GETTING_MSG)
-        obdValue = "ERROR R";
 
       break;
     }
@@ -352,5 +307,8 @@ void OBDRequests::main()
       break;
     }
   }
+
+  if (_OBD->nb_rx_state != ELM_GETTING_MSG)
+    obdValue = "ERROR R";
 
 }
