@@ -1,2 +1,2 @@
-# arduino-OBD-clio2
-OBD displaying for renault clio 2
+# arduino-OBD-piotr
+OBD displaying for piotr uno duo
