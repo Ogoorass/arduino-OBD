@@ -6,6 +6,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <string.h>
+#include <Servo.h>
 
 BluetoothSerial SerialBT;
 #define ELM_PORT SerialBT
@@ -21,6 +22,8 @@ BluetoothSerial SerialBT;
 #define STOP_ON_ERROR false // determine if stops on error
 
 #define BAUD_RATE 115200 // serial baud rate
+
+#define SERVO_PIN 9 
 
 // display stuff
 #define TEXT_SIZE 3 // size for main text
@@ -137,10 +140,11 @@ static const char* opelLogo[] = {
 "                  ......                                                                                                        "};
 
 
+Servo myservo;
 
 
 void setup() {
-
+  
   Serial.begin(BAUD_RATE);  
   while(!Serial);
 
@@ -181,6 +185,8 @@ void setup() {
       ;
   }
 
+  myservo.attach(SERVO_PIN);
+
 }
 
 
@@ -198,7 +204,7 @@ void loop() {
     while (Serial.available() > 0)
       message += char(Serial.read());
 
-    if (message == "RPM")
+    if (message == "RPM") 
       obdRequests.setObdState(_RPM);
     else if (message == "REF_TORQUE")
       obdRequests.setObdState(_REF_TORQUE);

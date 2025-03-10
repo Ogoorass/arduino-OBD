@@ -3,6 +3,7 @@
 #include "ELMduino.h"
 #include "OBDRequests.h"
 #include "UnitDisplayed.h"
+#include <Servo.h>
 
 // constructor
 OBDRequests::OBDRequests(
@@ -18,7 +19,8 @@ OBDRequests::OBDRequests(
   int denominator_y_offset,
   int unit_normal_x_offset,
   int unit_normal_y_offset,
-  int text_size_unit_normal
+  int text_size_unit_normal,
+  Servo servo
 )
 {
 
@@ -79,6 +81,8 @@ void OBDRequests::main()
         _unit->setNominator("obr");
         _unit->setDenominator("min");
         
+        servo.write(map(obdValue - 1000, 0, 5000, 0, 180)); // -1000 to compensate 180 degree roation of the servo
+
       }       
 
       break;

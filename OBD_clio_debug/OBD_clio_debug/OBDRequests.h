@@ -47,7 +47,8 @@ class OBDRequests
       int denominator_y_offset,
       int unit_normal_x_offset,
       int unit_normal_y_offset,
-      int text_size_unit_normal
+      int text_size_unit_normal,
+      Servo servo
     );
 
     void setObdState(Obd_pid obd_state);
